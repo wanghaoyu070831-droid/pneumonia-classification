@@ -1,0 +1,63 @@
+{
+    "selection_rule": "Maximize validation specificity subject to pneumonia recall >= 0.95",
+    "validation_best": {
+        "threshold": 0.63,
+        "accuracy": 0.9694656488549618,
+        "balanced_accuracy": 0.9721793773207654,
+        "precision": 0.9920844327176781,
+        "recall": 0.9665809768637532,
+        "specificity": 0.9777777777777777,
+        "f1": 0.9791666666666666,
+        "roc_auc": 0.9946491478625155,
+        "confusion_matrix": [
+            [
+                132,
+                3
+            ],
+            [
+                13,
+                376
+            ]
+        ]
+    },
+    "test_default": {
+        "threshold": 0.5,
+        "accuracy": 0.875,
+        "balanced_accuracy": 0.8393162393162392,
+        "precision": 0.8436123348017621,
+        "recall": 0.982051282051282,
+        "specificity": 0.6965811965811965,
+        "f1": 0.9075829383886256,
+        "roc_auc": 0.9352180582949814,
+        "confusion_matrix": [
+            [
+                163,
+                71
+            ],
+            [
+                7,
+                383
+            ]
+        ]
+    },
+    "test_optimized": {
+        "threshold": 0.63,
+        "accuracy": 0.8862179487179487,
+        "balanced_accuracy": 0.855982905982906,
+        "precision": 0.8600451467268623,
+        "recall": 0.9769230769230769,
+        "specificity": 0.7350427350427351,
+        "f1": 0.9147659063625451,
+        "roc_auc": 0.9352180582949814,
+        "confusion_matrix": [
+            [
+                172,
+                62
+            ],
+            [
+                9,
+                381
+            ]
+        ]
+    }
+}

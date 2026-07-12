@@ -155,7 +155,39 @@ ResNet18使用ImageNet预训练权重。
 | Accuracy | Precision | Recall | Specificity | F1 | ROC-AUC |
 |---:|---:|---:|---:|---:|---:|
 | **0.9022** | **0.8764** | **0.9821** | **0.7692** | **0.9262** | **0.9640** |
+### 5.3 外部验证与域适配
 
+为评价模型的跨数据集泛化能力，本项目使用ChestMNIST进行外部验证。实验从测试集中选取242例Pneumonia和242例No Finding，构成平衡测试集。
+
+### 5.4 零样本外部验证
+
+未经ChestMNIST训练的PneumoniaMNIST+模型表现如下：
+
+| Accuracy | Balanced Accuracy | Recall | Specificity | F1 | AUC |
+|---:|---:|---:|---:|---:|---:|
+| 0.5289 | 0.5289 | 0.9835 | 0.0744 | 0.6761 | 0.6454 |
+
+模型几乎将所有外部图像判断为肺炎，说明其在原数据集上的高性能不能直接迁移到不同来源的胸片。
+
+### 5.5 ChestMNIST域适配
+
+从PneumoniaMNIST+模型出发，使用ChestMNIST训练集进行低学习率微调。域适配后的独立测试结果为：
+
+| Accuracy | Balanced Accuracy | Precision | Recall | Specificity | F1 | AUC |
+|---:|---:|---:|---:|---:|---:|---:|
+| 0.6860 | 0.6860 | 0.6907 | 0.6736 | 0.6983 | 0.6820 | 0.7403 |
+
+域适配使AUC从0.6454提高到0.7403，Specificity从0.0744提高到0.6983，证明模型获得了更平衡的跨域判断能力。
+
+但模型性能仍不足以用于真实诊断。可能原因包括：
+
+1. 儿童PneumoniaMNIST与NIH ChestMNIST存在明显数据分布差异；
+2. ChestMNIST使用报告文本自动提取的弱标签，存在标签噪声；
+3. Pneumonia病例可能同时包含其他疾病标签；
+4. ChestMNIST实验使用64×64图像；
+5. 模型尚未经过多中心、高分辨率临床数据验证。
+
+因此，本项目的主要结论不是模型已经能够用于临床，而是高分辨率训练和域适配可以提高性能，但跨数据集泛化仍是医学影像AI的关键难点。
 ## 6. 模型对比
 
 | 模型 | 阈值 | Accuracy | Recall | Specificity | F1 | AUC |

@@ -1,0 +1,67 @@
+{
+    "model": "ChestMNIST-adapted ResNet18",
+    "source_model": "PneumoniaMNIST+ native 224 ResNet18",
+    "adaptation_data": "ChestMNIST 64",
+    "checkpoint_epoch": 7,
+    "selection_rule": "Maximize balanced accuracy on the validation split",
+    "validation_best": {
+        "threshold": 0.775,
+        "accuracy": 0.7105263157894737,
+        "balanced_accuracy": 0.7105263157894737,
+        "precision": 0.8043478260869565,
+        "recall": 0.556390977443609,
+        "specificity": 0.8646616541353384,
+        "f1": 0.6577777777777778,
+        "roc_auc": 0.736502911413873,
+        "confusion_matrix": [
+            [
+                115,
+                18
+            ],
+            [
+                59,
+                74
+            ]
+        ]
+    },
+    "test_default": {
+        "threshold": 0.5,
+        "accuracy": 0.6859504132231405,
+        "balanced_accuracy": 0.6859504132231404,
+        "precision": 0.690677966101695,
+        "recall": 0.6735537190082644,
+        "specificity": 0.6983471074380165,
+        "f1": 0.6820083682008368,
+        "roc_auc": 0.7403012089338159,
+        "confusion_matrix": [
+            [
+                169,
+                73
+            ],
+            [
+                79,
+                163
+            ]
+        ]
+    },
+    "test_optimized": {
+        "threshold": 0.775,
+        "accuracy": 0.6528925619834711,
+        "balanced_accuracy": 0.6528925619834711,
+        "precision": 0.7466666666666667,
+        "recall": 0.4628099173553719,
+        "specificity": 0.8429752066115702,
+        "f1": 0.5714285714285714,
+        "roc_auc": 0.7403012089338159,
+        "confusion_matrix": [
+            [
+                204,
+                38
+            ],
+            [
+                130,
+                112
+            ]
+        ]
+    }
+}
